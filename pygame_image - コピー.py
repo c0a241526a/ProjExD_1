@@ -23,19 +23,26 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        x=tmr%3200#+=だと左へ移動するのためbiltの方は-にする    tmr%3200でtmr=3200の余りを出すので0~3199の間になる
         key_lst=pg.key.get_pressed()#すべてのキーの押下状態(押されているか)を取得(T/Fで出力)
-        if key_lst:#キーボードが押されていないとき
-            koukaton_rct.move_ip((-1,0))#背景画像と同じ速度で流れる
+
+        if key_lst:
+            koukaton_rct.move_ip((-x, 0))
+        elif key_lst[pg.K_UP]:
+
+        elif key_lst[pg.K_DOWN]:
+
+        
 
         if key_lst[pg.K_UP]:#K_UPはキーボードの↑が押されているときにTrue
-            koukaton_rct.move_ip((-1,-1))
+            koukaton_rct.move_ip((0,-1))#movie_ip()で移動させる 引数1:横移動速度,引数2：縦移動速度 上に移動
         if key_lst[pg.K_DOWN]:#K_UPはキーボードの↓が押されているときにTrue
-            koukaton_rct.move_ip((-1,+1))
-        if key_lst[pg.K_RIGHT]:#K_UPはキーボードの→が押されているときにTrue
-            koukaton_rct.move_ip((+2,0))
+            koukaton_rct.move_ip((0,+1))#下に移動
         if key_lst[pg.K_LEFT]:#K_UPはキーボードの←が押されているときにTrue
-            koukaton_rct.move_ip((-1,0))
-        x=tmr%3200#+=だと左へ移動するのためbiltの方は-にする    tmr%3200でtmr=3200の余りを出すので0~3199の間になる
+            koukaton_rct.move_ip((-1,0))#左に移動
+        if key_lst[pg.K_RIGHT]:#K_UPはキーボードの→が押されているときにTrue
+            koukaton_rct.move_ip((+1,0))#右に移動
+        
         screen.blit(bg_img, [-x, 0])#スクリーンsurfaceの(横,縦)にbg_img を貼り付ける　blit(画像,位置)でsurfaceに他のsurfaceを貼り付け
         screen.blit(bg_img2, [-x+1600, 0])#スクリーンが連続しているようにみせる 画像を反転させて画像を繋げる
         screen.blit(bg_img, [-x+3200, 0])#元の画像をつなげて背景をループさせる 画像の横幅は1600
