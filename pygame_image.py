@@ -10,7 +10,10 @@ def main():
     screen = pg.display.set_mode((800, 600))#スクリーンsurfaceを作成 set_mode(,)
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")#pg_bg.jpgを読み込む 背景画像のsurface
+    koukaton_img = pg.image.load("fig/3.jpg")#こうかとんの画像
+    koukaton_img = pg.transform.flip(koukaton_img,True,False)#こうかとんの画像を左右反転 transform.flip(画像,左右反転T/F,上下反転T/F)
     tmr = 0
+    
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
