@@ -18,11 +18,11 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [0, 0])#スクリーンsurfaceの(0,0)にbg_img を貼り付ける　blit(画像,位置)でsurfaceに他のsurfaceを貼り付け
+        screen.blit(bg_img, [-tmr, 0])#スクリーンsurfaceの(横,縦)にbg_img を貼り付ける　blit(画像,位置)でsurfaceに他のsurfaceを貼り付け
         screen.blit(koukaton_img, [300, 200])
         pg.display.update()
-        tmr += 1        
-        clock.tick(10)#clock.tick(n)で1秒にn回while文を実行する
+        tmr += 1  #+=だと左へ移動するのためbiltの方は-にする    
+        clock.tick(200)#clock.tick(n)で1秒にn回while文を実行する
 
 
 if __name__ == "__main__":#このプログラムから実行されたときのみ実行される
