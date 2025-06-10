@@ -10,7 +10,7 @@ def main():
     screen = pg.display.set_mode((800, 600))#スクリーンsurfaceを作成 set_mode(,)
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")#pg_bg.jpgを読み込む 背景画像のsurface
-    koukaton_img = pg.image.load("fig/3.jpg")#こうかとんの画像
+    koukaton_img = pg.image.load("fig/3.png")#こうかとんの画像
     koukaton_img = pg.transform.flip(koukaton_img,True,False)#こうかとんの画像を左右反転 transform.flip(画像,左右反転T/F,上下反転T/F)
     tmr = 0
     
@@ -19,6 +19,7 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [0, 0])#スクリーンsurfaceの(0,0)にbg_img を貼り付ける　blit(画像,位置)でsurfaceに他のsurfaceを貼り付け
+        screen.blit(koukaton_img, [300, 200])
         pg.display.update()
         tmr += 1        
         clock.tick(10)#clock.tick(n)で1秒にn回while文を実行する
