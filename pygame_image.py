@@ -10,6 +10,7 @@ def main():
     screen = pg.display.set_mode((800, 600))#スクリーンsurfaceを作成 set_mode(,)
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")#pg_bg.jpgを読み込む 背景画像のsurface
+    bg_img2 = pg.transform.flip(bg_img,True,False)#画像を反転させて画像を繋げるための画像
     koukaton_img = pg.image.load("fig/3.png")#こうかとんの画像
     koukaton_img = pg.transform.flip(koukaton_img,True,False)#こうかとんの画像を左右反転 transform.flip(画像,左右反転T/F,上下反転T/F)
     tmr = 0
@@ -19,7 +20,7 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [-tmr, 0])#スクリーンsurfaceの(横,縦)にbg_img を貼り付ける　blit(画像,位置)でsurfaceに他のsurfaceを貼り付け
-        screen.blit(bg_img, [-tmr+1600, 0])#スクリーンが連続しているようにみせる
+        screen.blit(bg_img2, [-tmr+1600, 0])#スクリーンが連続しているようにみせる 画像を反転させて画像を繋げる
         screen.blit(koukaton_img, [300, 200])
         pg.display.update()
         tmr += 1  #+=だと左へ移動するのためbiltの方は-にする  ここを-=でもよし  
