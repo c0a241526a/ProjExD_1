@@ -21,7 +21,7 @@ def main():
         screen.blit(bg_img, [-tmr, 0])#スクリーンsurfaceの(横,縦)にbg_img を貼り付ける　blit(画像,位置)でsurfaceに他のsurfaceを貼り付け
         screen.blit(koukaton_img, [300, 200])
         pg.display.update()
-        tmr += 1  #+=だと左へ移動するのためbiltの方は-にする    
+        tmr += 1  #+=だと左へ移動するのためbiltの方は-にする  ここを-=でもよし  
         clock.tick(200)#clock.tick(n)で1秒にn回while文を実行する
 
 
